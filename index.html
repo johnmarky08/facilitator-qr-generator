@@ -142,7 +142,9 @@
 
     <script>
       function uploadDone() {
-        document.getElementById("status").textContent = "Upload done!";
+        document.getElementById(
+          "status"
+        ).textContent = `Upload successfull! (${fileInput.files[0].name})`;
       }
 
       async function generateQRCodes() {
