@@ -173,7 +173,7 @@
 
           for (const line of lines) {
             try {
-              const url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
+              const url = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(
                 line
               )}`;
               const response = await axios.get(url, {
