@@ -142,9 +142,9 @@
 
     <script>
       function uploadDone() {
-        document.getElementById(
-          "status"
-        ).textContent = `Upload successfull! (${fileInput.files[0].name})`;
+        document.getElementById("status").textContent = `Upload successfull! (${
+          document.getElementById("fileInput").files[0].name
+        })`;
       }
 
       async function generateQRCodes() {
@@ -152,7 +152,10 @@
         const status = document.getElementById("status");
         status.textContent = "";
 
-        if (!fileInput.files.length) {
+        if (
+          !fileInput.files.length ||
+          !fileInput.files[0].name.endsWith(".txt")
+        ) {
           alert("Please upload a .txt file.");
           return;
         }
@@ -188,7 +191,7 @@
 
           // Generate and download the ZIP file
           zip.generateAsync({ type: "blob" }).then((content) => {
-            saveAs(content, "QR_Codes.zip");
+            saveAs(content, `${file.name.replace(".txt", "")}.zip`);
             status.textContent = "Download done!";
           });
         };
